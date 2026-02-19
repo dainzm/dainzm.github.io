@@ -140,6 +140,64 @@ input::placeholder {
     border-left: 4px solid #667eea;
 }
 
+/* Добавляем медиа-запрос для мобильных устройств */
+@media (max-width: 600px) {
+    /* Отключаем курсор-шар */
+    .cursor-ball {
+        display: none !important;
+    }
+    
+    /* Убираем 3D эффекты с контейнера */
+    .container {
+        transform: none !important;
+        transform-style: flat !important;
+        backdrop-filter: none; /* Убираем размытие для лучшей производительности */
+    }
+    
+    /* Корректируем отступы и размеры для мобильной версии */
+    body {
+        padding: 10px; /* Уменьшаем отступы для маленьких экранов */
+    }
+    
+    .gradient-container {
+        background-position: center; /* Центрируем градиент */
+    }
+    
+    .container {
+        padding: 25px 15px; /* Уменьшаем внутренние отступы */
+        border-radius: 15px; /* Уменьшаем скругление углов */
+        box-shadow: 
+            0 10px 25px rgba(0, 0, 0, 0.1),
+            inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    }
+    
+    /* Оптимизируем шрифты для мобильных устройств */
+    h1 {
+        font-size: 1.6rem;
+    }
+    
+    label {
+        font-size: 1rem;
+    }
+    
+    input {
+        padding: 10px 14px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Добавляем отзывчивость для форм */
+@media (max-width: 480px) {
+    .container {
+        padding: 20px 10px;
+    }
+    
+    input {
+        font-size: 0.85rem;
+    }
+}
+
+
 @media (max-width: 600px) {
     .container {
         padding: 30px 20px;
@@ -161,4 +219,5 @@ input::placeholder {
         min-width: auto;
     }
 }
+
 
