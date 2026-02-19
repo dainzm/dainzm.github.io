@@ -6,7 +6,7 @@ let currentX = 0;
 let currentY = 0;
 
 // Параметры для 3D-эффекта панели
-const tiltSpeed = 0.025;
+const tiltSpeed = 0.04;
 let panelTargetX = 0;
 let panelTargetY = 0;
 let panelCurrentX = 0;
@@ -156,3 +156,4 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error('Кнопка с ID "redirectButton" не найдена!');
     }
 });
+
