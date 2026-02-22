@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Секундомер | dainz tools</title>
+    <link rel="stylesheet" href="secundomerstyle.css">
+</head>
+<body>
+    <div class="gradient-container"></div>
+    <div class="navigation-panel">
+        <button onclick="window.location.href='../index.html'">Главная</button>
+        <button onclick="window.open('https://dalink.to/dainzz', '_blank')">Поддержать автора</button>
+        <a href="https://t.me/dainzyt" target="_blank" class="tg-icon-link">
+            <img src="../images/tg_logo.png" alt="Telegram" class="tgchannelimage">
+        </a>
+    </div>
+    <div class="container">
+        <h1>Секундомер</h1>
+
+        <div class="stopwatch-display" id="display">00:00.000</div>
+
+        <div class="controls">
+            <button id="startStop" class="control-btn">Старт</button>
+            <button id="reset" class="control-btn">Сброс</button>
+        </div>
+
+        <ul class="laps" id="laps"></ul>
+
+        <p class="version">stopwatch v1.0</p>
+        <button onclick="window.location.href='../index.html'" class="btnBack" id="backButton">На главную</button>
+    </div>
+
+    <script src="secundomerscript.js"></script>
+</body>
+</html>
