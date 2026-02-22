@@ -12,58 +12,92 @@ body {
     justify-content: center;
     position: relative;
     overflow: hidden;
-    perspective: 1200px;
-}
-
-.gradient-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
     background: linear-gradient(315deg, #003153 0%, #1B1B1B 74%);
-    transition: background-position 0.3s ease;
 }
 
-.cursor-ball {
-    position: fixed;
-    pointer-events: none;
-    z-index: 9999;
-    width: 1000px;
-    height: 1000px;
-    border-radius: 50%;
-    background: radial-gradient(circle, #253d6b 0%, transparent 75%);
-    filter: blur(20px);
-    opacity: 0.25;
-    transform: translate(-50%, -50%);
-    mix-blend-mode: screen;
+.navigation-panel {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    z-index: 1000;
+    padding: 8px 16px;
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+}
+
+.navigation-panel button {
+    background-color: #bbbbbb;
+    border: none;
+    border-radius: 12px;
+    padding: 15px 25px;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    color: #000000;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow:
+        0 4px 10px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    text-align: center;
+    min-width: 100px;
+    white-space: nowrap;
+}
+
+.navigation-panel button:hover {
+    opacity: 80%;
+    transform: translateY(-4px);
+}
+
+.tg-icon-link {
+  display: block;
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  background-color: #bbbbbb;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow:
+    0 4px 10px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.tg-icon-link img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: brightness(0.9);
+}
+
+.tg-icon-link:hover {
+  transform: translateY(-4px);
+  opacity: 0.8;
 }
 
 .main-panel {
     background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(15px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 20px;
     padding: 40px;
     text-align: center;
     max-width: 500px;
     width: 90%;
-    box-shadow:
-        0 20px 40px rgba(0, 0, 0, 0.3),
-        inset 0 1px 0 rgba(255, 255, 255, 0.5);
-    transform-style: preserve-3d;
-    position: relative;
-    /* Начальное состояние анимации */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
     opacity: 0;
-    transform: translateY(50px) rotateX(-10deg) scale(0.8);
+    transform: translateY(20px);
+    transition: all 0.7s ease; /* Плавная кривая */
 }
 
-/* Анимация появления панели */
-.main-panel.animate-in {
+.main-panel.animated {
     opacity: 1;
-    transform: translateY(0) rotateX(0deg) rotateY(0deg) scale(1);
-    transition: all 1s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+    transform: translateY(0);
 }
 
 .panel-title {
@@ -75,6 +109,12 @@ body {
     font-weight: 300;
 }
 
+.version {
+    min-height: 5px;
+    color: white;
+    opacity: 15%;
+}
+
 .utilities-label {
     color: rgba(255, 255, 255, 0.8);
     font-size: 2rem;
@@ -84,103 +124,51 @@ body {
     font-weight: 600;
 }
 
-.helpButton {
-    background: rgba(255, 255, 255, 0.15);
-    color: white;
-    border: none;
-    padding: 20px 40px;
-    font-size: 1rem;
+/* Контейнер для кнопок в ряд */
+.buttons-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+
+
+.panelbuttons button{
+    flex: 1;
+    min-width: 140px;
+    padding: 18px 20px;
+    font-size: 1.1rem;
     font-weight: 600;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow:
-        0 15px 35px rgba(0, 0, 0, 0.1),
-        inset 0 1px 0 rgba(255, 255, 255, 0.5);
-    backdrop-filter: blur(10px);
-    letter-spacing: -0.5px;
-    overflow: hidden;
-    position: relative;
-}
-
-.helpButton::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 255, 255, 0.4),
-        transparent
-    );
-    transition: left 0.5s;
-}
-
-.helpButton:hover::before {
-    left: 100%;
-}
-
-.helpButton:hover {
-    transform: translateY(-5px);
-    box-shadow:
-        0 20px 40px rgba(0, 0, 0, 0.2),
-        inset 0 1px 0 rgba(255, 255, 255, 0.7);
-}
-
-.helpButton:active {
-    transform: translateY(-2px);
-}
-
-
-.goldcalc-button {
-    background: rgba(221, 221, 221, 0.95);
-    color: #4d5666;
     border: none;
-    padding: 20px 40px;
-    font-size: 1rem;
-    font-weight: 600;
-    border-radius: 20px;
+    border-radius: 15px;
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow:
-        0 15px 35px rgba(0, 0, 0, 0.1),
-        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+    background-color: #d7d8d9;
+    color: #606978;
+    text-decoration: none;
+    text-align: center;
+    transition: opacity 0.3s ease;
+    white-space: nowrap;
     backdrop-filter: blur(10px);
-    letter-spacing: -0.5px;
-    position: relative;
+    z-index: 1000;
+    letter-spacing: -0.3px;
     overflow: hidden;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
 }
 
-.goldcalc-button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 255, 255, 0.4),
-        transparent
-    );
-    transition: left 0.5s;
+
+
+.panelbuttons button:hover {
+    opacity: 75%;
+    transform: translateY(-3px);
 }
 
-.goldcalc-button:hover::before {
-    left: 100%;
+.soonbtn {
+    cursor: not-allowed !important;
+    opacity: 0.6;
 }
 
-.goldcalc-button:hover {
-    transform: translateY(-5px);
-    box-shadow:
-        0 20px 40px rgba(0, 0, 0, 0.2),
-        inset 0 1px 0 rgba(255, 255, 255, 0.7);
-}
-
-.goldcalc-button:active {
-    transform: translateY(-2px);
+.soonbtn:hover {
+    transform: none !important;
+    opacity: 0.6 !important;
 }

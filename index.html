@@ -3,23 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>dainzm.github</title>
+    <title>dainz tools</title>
     <link rel="stylesheet" href="indexstyle.css">
 </head>
 <body>
-    <!-- Контейнер для градиента -->
-    <div class="gradient-container"></div>
-    
-    <!-- Шарик для эффекта курсора -->
-    <div class="cursor-ball"></div>
-    
-    <!-- Основная панель с текстом и кнопкой -->
-    <div class="main-panel" id="mainPanel">
-        <h1 class="panel-title">dainzm.github</h1>
-        <div class="utilities-label">Наши утилиты:</div>
-        <button class="goldcalc-button" id="redirectButton">GoldCalc</button>
-        <button onclick="window.location.href='https://dalink.to/dainzz'" class="helpButton" id="backButton">Поддержать автора</button>
 
+    <div class="navigation-panel">
+        <button onclick="window.location.href='index.html'">Главная</button>
+        <button onclick="window.open('https://dalink.to/dainzz', '_blank')">Поддержать автора</button>
+        <a href="https://t.me/dainzyt" target="_blank" class="tg-icon-link">
+            <img src="../images/tg_logo.png" alt="Telegram" class="tgchannelimage">
+        </a>
+    </div>
+    <div class="main-panel" id="mainPanel">
+        <h1 class="panel-title">dainz tools</h1>
+        <div class="utilities-label">Наши утилиты:</div>
+        <div class="panelbuttons">
+            <button onclick="window.location.href='Gold Calculator/Gcalc.html'" class="goldcalc-button">GoldCalc</button>
+            <button class="soonbtn">Скоро...</button>
+        </div>
+        <p class="version">dtools v1.0</p>
     </div>
     <script src="indexscript.js"></script>
 </body>
